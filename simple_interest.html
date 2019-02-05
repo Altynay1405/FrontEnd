@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+
+        <form>
+            <label for="num1">Initial Investment</label>
+            <input type="text" name="p" id="p"/><br>
+            
+         
+            <label for="num2">Interest Rate (%)</label>
+            <input type="text" name="r" id="r"/><br>
+            
+            
+            <label for="num3">Number of Years</label>
+            <input type="text" name="t" id="t"/><br>
+            
+            <label for="result">Result</label>
+            <input type="text" name="result" id="result"/><br>
+            
+            <button type="button" onclick="interest();">Calculate</button>
+        </form>
+        
+        <script>
+        function interest() {
+                var num1 = parseInt(document.getElementById("p").value);
+                var num2 = parseInt(document.getElementById("r").value);
+                var num3 = parseInt(document.getElementById("t").value);
+            
+                var x = num1 * (1 + ((num2/100) * num3));
+                console.log(x);
+                document.getElementById("result").value = x;
+        //this one can go in the body or head!
+            }
+        </script>
+
+    </body>
+
+</html>

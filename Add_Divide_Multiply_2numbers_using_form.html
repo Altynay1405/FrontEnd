@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Add,multiply,divide 2 numbers using form</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <form>
+            <label for="num1">Amount 1 </label>
+            <input type="text" name ="num1" id="num1"/>
+
+            <label for="num2">Amount 2 </label>
+            <input type="text" name ="num2" id="num2"/>
+
+            <label for="result">Result</label>
+            <input type="text" name ="result" id="result"/>
+
+            <button type="button" onclick="AddNumbers()">ADD</button>
+
+        </form>
+
+        <form>
+            <label for="num3">Amount 3 </label>
+            <input type="text" name ="num3" id="num3"/>
+
+            <label for="num4">Amount 4 </label>
+            <input type="text" name ="num4" id="num4"/>
+
+            <label for="display">Display</label>
+            <input type="text" name ="display" id="display"/>
+
+            <button type="button" onclick="MultiplyNumbers()">Multiply</button>
+
+        </form>
+
+
+        <form>
+            <label for="num5">Amount 5 </label>
+            <input type="text" name ="num5" id="num5">
+
+            <label for="num6">Amount 6 </label>
+            <input type="text" name ="num6" id="num6">
+
+            <label for="show">Show</label>
+            <input type="text" name ="show" id="show">
+
+            <button type="button" onclick="DivideNumbers()">Divide</button>
+
+        </form>
+
+
+
+        <script>
+            function AddNumbers() {
+
+                var num1 = parseInt(document.getElementById("num1").value);
+                var num2 = parseInt(document.getElementById("num2").value);
+                var x = (parseInt(num1) + parseInt(num2));
+                document.getElementById("result").value = x
+
+            };
+
+            function MultiplyNumbers() {
+
+                var num3 = parseInt(document.getElementById("num3").value);
+                var num4 = parseInt(document.getElementById("num4").value);
+                var y = (parseInt(num3) * parseInt(num4));
+                document.getElementById("display").value = y
+
+            };
+
+
+            function DivideNumbers() {
+
+                var num5= parseInt(document.getElementById("num5").value);
+                var num6 = parseInt(document.getElementById("num6").value);
+                //need parseInt to convert from string!
+                if(num6 === 0) {
+                    alert("Cannot divide by 0!");
+                    document.getElementById("num6").value = "";
+                    document.getElementById("show").value = "";
+                } else {
+                    var x = num5 / num6;
+                    document.getElementById("show").value = x;
+                }
+
+            }
+        </script>
+
+    </body>
+</html>

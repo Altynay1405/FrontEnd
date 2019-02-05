@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Adding 2 numbers</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        
+        <p>Take 2 numbers from the user and add them</p>
+        <p id ="result"> Adding numbers </p>
+
+        <script>
+            window.onload = function () {
+
+                var num1,num2;
+                num1 = window.prompt("Enter the 1st number");
+                alert(num1);
+
+                num2 = window.prompt("Enter the 2nd number");
+                alert(num2);
+
+
+                var result = (parseInt(num1) + parseInt(num2));
+
+                var display = "Adding" + num1 + "and" + num2 + "=" + result;
+               document.getElementById("result").innerHTML = display;
+
+            };
+
+
+        </script>
+
+
+    </body>
+</html>

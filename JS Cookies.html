@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>JS Cookies select bg color</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+  
+ <select id="ddlTheme" onchange="setColorCookie()">
+    <option value="Select Color">Select Color</option>
+    <option value="red">Red</option>
+    <option value="green">Green</option>
+    <option value="blue">Blue</option>
+</select>
+        
+<script >
+    window.onload = function ()
+    {
+        if (document.cookie.length != 0)
+        {
+            var nameValueArray = document.cookie.split("=");
+            document.getElementById("ddlTheme").value = nameValueArray[1];
+            document.bgColor = nameValueArray[1];
+        }
+    }
+      
+
+    function setColorCookie()
+    {
+        var selectedValue = document.getElementById("ddlTheme").value;
+        if (selectedValue != "Select Color")
+        {
+            document.bgColor = selectedValue;
+            document.cookie = "color=" + selectedValue +
+                            ";expires=Fri, 21 Dec 2018 01:00:00 UTC;";
+        }
+    }
+</script>
+    </body>
+</html>
