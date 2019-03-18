@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title> Aspan | Women's, Men's and Kids' Clothing and Accessories  </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="mystyle.css">
+   
+       <link rel="stylesheet" type="text/css" href="mystyle.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      
+        
+        
+    </head>
+   
+    <body>
+        
+        <nav class="menu">
+    <ul>
+        <li class="menu"><a href="index.html">Main</a></li>
+        <li class="menu"><a href="About_us.html">About us</a></li>
+        <li class="menu"><a href="Womens_Clothing.html">Women`s Clothing</a></li>
+        <li class="menu"><a href="Mens_Clothing.html">Men`s Clothing</a></li>
+        <li class="menu"><a href="Kids_Clothing.html">Kids Clothing</a></li>
+        <li class="menu"><a href="Contact_us.html">Contact us</a></li>
+        <li class="menu"><a href="Login.html">Login</a></li>
+        <li class="menu"><a href="ShopCart_LocalStorage_Zhumantayeva.html">My shoppping cart</a></li>
+    </ul>
+</nav>
+        
+        
+        <div id="cart"></div>
+        <hr>
+        <h3>Our Products</h3>
+        <table style="width: 50%" class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Product ID</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody id="productsTbl"></tbody>
+        </table>
+
+        <script>
+            var inventory = [
+                {
+                       
+                        id: "#101 Women`s Long Sleeve Sweater",
+                        desc:"Cozy up in this super-soft sweater with a textured cable-knit and cotton blend for casual comfort once the temperature drops",
+                        price: 59.99, 
+                        image: "women_sw.jpg"
+                    },
+                    {
+                     
+                        id: "#201 Men`s V-Neck Sweater", 
+                        desc:"A textured jacquard knit lends rugged detail to this classic cut sweater that'll never go out of style as the season shifts, with a sailboat motif for seaside appeal",
+                        price: 39.99, 
+                        image: "men_sweater.jpg"
+                    },
+                    {
+                        
+                        id: "#301 Girls Striped Top",
+                        desc:"This cozy long sleeve off her season-ready looks—with cool graphics too",
+                        price: 24.99, 
+                        image: "kids_sweater.jpg"
+                    },
+                    {
+                      
+                        id: "#102 Sleeve Top", 
+                        desc:"This shoulder-baring, breezy top is perfect for off-duty time or nautical-inspired days in the office, with a soft cotton weave for casual, lightweight comfort",
+                        price: 29.99, 
+                        image: "women_tshirt.jpg"
+                    },
+                    {
+                        
+                        id: "#202 Crew-Neck T-Shirt", 
+                        desc:"When the weekend arrives, it's time to relax your style, and this casually cool tee feels just right",
+                        price: 19.99, 
+                        image: "men_tshirt.jpg"
+                    },
+                    {
+                    
+                        id: "#302 Discovery Boys T-Shirt",
+                        desc:"Styled with chinos or denim, this graphic button down adds cool style to his school week wardrobe",
+                        price: 24.99, 
+                        image: "kids_tshirt.jpg"
+                    },
+                    {
+                       
+                        id: "#103 Women`s Ponte pants", 
+                        desc:"Sleek style, comfortable fit—these pants look as good as they feel—with timeless tailoring that works with your favorite flats or heels",
+                        price: 35.99, 
+                        image: "women_pans.jpg"
+                    },
+                    {
+                      
+                        id: "#203 Men`s Classic Pants",
+                        desc:"Crafted with super-soft stretch twill, these classic fit, flat front pants have a smooth, slimming appeal, but move with you for durable wear and lasting comfort",
+                        price: 34.99, 
+                        image: "men_pants.jpg"
+                    },
+                    {
+                     
+                        id: "#303 Classic Boys Pants",
+                        desc:"As cool and comfy as his favorite pair of jeans, these pants put a polished spin on his school week lineup",
+                        price: 27.99, 
+                        image: "kids_pants.jpg"
+                    },
+                    {
+                      
+                        id: "#104 Women`s Pajama Set", 
+                        desc:"Lightweight and super-soft—everything you need in pajamas,with a drawstring waist for an easy, snug fit",
+                        price: 38.99, 
+                        image: "women_pajama.jpg"
+                    },
+                    {
+                  
+                        id: "#204 Men`s Pajama Set",
+                        desc: "With a soft cotton blend, these pajamas will be your go-to set for all-day comfort during off-duty hours",
+                        price: 36.99, 
+                        image: "men_pj.jpg"
+                    },
+                    {
+                     
+                        id: "#304 Girls Mermaid Pajama Set",
+                        desc:"Supersoft, breathable cotton and an easy, slip-on elastic waistband make these pretty patterned pajamas her go-to for cozy comfort all night long",
+                        price: 34.99, 
+                        image: "girls_pajama.jpg"
+                    }
+              
+            ];
+            window.onload = function () {
+                for (var i = 0; i < inventory.length; i++) {
+                    var this_product = inventory[i];
+                    document.getElementById("productsTbl").innerHTML +=
+                            "<tr>" +
+                            "<td valign='top'>" + this_product.id + "</td>" +
+                            "<td valign='top'><img src='images/" + this_product.image + "' alt='Product'><br><h3>" + this_product.desc + "</h3></td>" +
+                            "<td valign='top' align='right'>$" + this_product.price + "<br>\n\
+        <button onclick='addToCart(\"" + this_product.id + "\",1)'>Add To Cart</button></td>" +
+                            "</tr>";
+                }
+                doShowAll();
+            };
+            // Check if browser supports localStorage
+            function CheckBrowser() {
+                if ("localStorage" in window && window["localStorage"] !== null) {
+                    // we can use localStorage object to store data
+                    return true;
+                } else {
+                    //  we cannot use localStorage object to store data
+                    return false;
+                }
+            }
+            // Add individual product to shopping cart
+            function addToCart(p, qty) {
+                localStorage.getItem("lastname");
+                if (localStorage.getItem(p)) {
+                    localStorage.setItem(p, parseInt(localStorage.getItem(p)) + 1);
+                } else {
+                    localStorage.setItem(p, qty);
+                }
+                doShowAll();
+            }
+            // Show the Shopping Cart from localStorage
+            function doShowAll() {
+                if (CheckBrowser()) {
+                    var total_items = 0;
+                    var total_cost = 0;
+                    var x = "<table style='width:50%;' class='table'>";
+                    x += "<tr><th colspan='2'><h3>Your Shopping Cart</h3></th></tr>";
+                    x += "<tr><th>Product ID</th>";
+                    x += "<th>Product Description</th>";
+                    x += "<th>Unit Price</th>";
+                    x += "<th>Quantity</th>";
+                    x += "<th>Total</th>";
+                    x += "<th>Delete</th>";
+                    x += "</tr>";
+                    for (var i = 0; i < localStorage.length; i++) {
+                        var key = localStorage.key(i);
+                        var value = inventory[inventory.findIndex(x => x.id === key)].desc;
+                        var unit_price = inventory[inventory.findIndex(x => x.id === key)].price;
+                        x += "<tr>";
+                        x += "<td>" + key + "</td>";
+                        x += "<td>" + value + "</td>";
+                        x += "<td align='right'>" + unit_price + "</td>";
+                        x += "<td align='right'>" + localStorage.getItem(localStorage.key(i)) + "</td>";
+                        x += "<td align='right'>" + (localStorage.getItem(localStorage.key(i)) * unit_price).toFixed(2) + "</td>";
+                        x += "<td><input type=\"button\" onclick=\"deleteProduct('" + key.toString() + "')\" value='Delete'></td>";
+                        x += "</tr>";
+                        
+                        total_items += parseInt(localStorage.getItem(localStorage.key(i)));
+                        total_cost += (parseInt(localStorage.getItem(localStorage.key(i))) * parseFloat(unit_price));
+                    }
+                    
+                    // Create a table row to show totals
+                    x += "<tr>";
+                    x += "<td colspan='3' align='right'>Totals:</td>";
+                    x += "<td align='right'>"+total_items+"</td>";
+                    x += "<td align='right'>"+total_cost.toFixed(2)+"</td>";
+                    x += "</tr>";
+                    
+                    // Append the shopping cart to the page
+                    document.getElementById('cart').innerHTML = x;
+                } else {
+                    alert("Sorry, your browser does not support local storage.");
+                }
+            } // end function doShowAll
+            //Get the item value (qty)
+            function getItem(key) {
+                var value = localStorage.getItem(key);
+                return value;
+            }
+            // function to delete item from shopping cart
+            function deleteProduct(p) {
+                localStorage.removeItem(p);
+                doShowAll();
+            }
+        </script>
+    </body>
+</html>
